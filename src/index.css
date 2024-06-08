@@ -35,3 +35,9 @@
   font-style: italic;
   font-size: 20px;
 }
+
+.libre-baskerville-regular-italic-size {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 500;
+  font-style: italic;
+}
