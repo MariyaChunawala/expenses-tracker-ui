@@ -12,7 +12,7 @@ const Sidebox = ({ name }) => {
 
     return <>
         <div onClick={() => handleClick(name)}
-            className={`text-center w-64 h-14 m-auto my-2 rounded-[20px] flex items-center justify-center bg-white shadow-xl shadow-[#1f9f71] text-teal-900 cursor-pointer
+            className={`text-center w-64 h-14 m-auto my-2 rounded-[20px] flex items-center justify-center bg-white shadow-xl shadow-shadowTeal-1 text-teal-900 cursor-pointer
             ${active === name ? 'border-solid border-b-4 border-teal-800' : 'border-none'}`}>
             {name}
             {(name === 'Dashboard') ? <BiSolidDashboard className="text-3xl m-1" /> : ''}
@@ -29,7 +29,7 @@ const Menu = ({ name, md = false }) => {
 
     return <>
         <div onClick={() => handleClick(name)}
-            className={`text-teal-900 p-4 text-center shadow-lg m-2 shadow-lg shadow-teal-100 rounded-full ml-4 cursor-pointer
+            className={`text-teal-900 p-4 text-center m-2 shadow-lg shadow-teal-100 rounded-full ml-4 cursor-pointer
             ${active === name ? 'border-solid border-2 border-teal-800' : 'border-none'}
             ${md ? 'h-20 libre-baskerville-regular-italic-size text-[30px]' : 'libre-baskerville-regular-italic'}`}>
             {name}

@@ -16,6 +16,9 @@ export const theme = {
       800: '#166534',
       900: '#14532d',
       950: '#022c22'
+    },
+    shadowTeal: {
+      1: '#1f9f71'
     }
   },
   extend: {

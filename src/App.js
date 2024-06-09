@@ -1,14 +1,9 @@
 import DefaultHOC from "./HOC/Default.HOC";
-
-function Hello() {
-  return <>
-
-  </>
-}
+import DashboardPage from "./Pages/Dashboard.Pages";
 
 function App() {
   return <>
-    <DefaultHOC path='/' exact Component={Hello} />
+    <DefaultHOC path='/' exact Component={DashboardPage} />
   </>
 }
 export default App;
