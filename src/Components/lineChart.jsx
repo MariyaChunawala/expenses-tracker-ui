@@ -15,6 +15,15 @@ const LineChart = ({ data }) => {
         // Add margin
         const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 
+        // Max Income
+        const maxIncome = d3.max(data, d => d.Income)
+
+        // Max Expense
+        const maxExpense = d3.max(data, d => d.Expense)
+
+        // Max in both(Income, expense) for domain
+        const domain = d3.max([maxIncome, maxExpense]);
+
         // clear previous render
         svg.selectAll('*').remove();
 
@@ -29,7 +38,7 @@ const LineChart = ({ data }) => {
         // scaleLinear used for numerical values, d3.max will return maximum value in data and .nice() will used for rounding a number
         // Maps the range of values from 0 to the maximum value in the data array to the vertical range from the bottom to the top of the SVG.
         // This scale can then be used to position elements(such as lines or circles) on the y - axis based on their numerical values, ensuring that the height of the elements corresponds proportionally to their value.
-        const y = d3.scaleLinear().domain([0, d3.max(data, d => d.value)]).nice().range([height - margin.bottom, margin.top]);
+        const y = d3.scaleLinear().domain([0, domain]).nice().range([height - margin.bottom, margin.top]);
 
         //defines a function to create and render the x-axis of the chart using D3. g is a single argument used as group element.
         // d3.axisBottom add scale on x-axis
@@ -54,7 +63,17 @@ const LineChart = ({ data }) => {
         // Append y-axis
         svg.append("g").call(yAxis);
 
-        // Create and append line path
+        // Create and append line path to Expenses
+        svg.append("path")
+            .datum(data)
+            .attr("fill", "none")
+            .attr("stroke", "Red")
+            .attr("stroke-width", 1.5)
+            .attr("d", d3.line()
+                .x(d => x(d.date))
+                .y(d => y(d.Expense))
+                .curve(d3.curveCatmullRom.alpha(0.5)));
+
         svg.append("path")
             .datum(data)
             .attr("fill", "none")
@@ -62,11 +81,12 @@ const LineChart = ({ data }) => {
             .attr("stroke-width", 1.5)
             .attr("d", d3.line()
                 .x(d => x(d.date))
-                .y(d => y(d.value)));
+                .y(d => y(d.Income))
+                .curve(d3.curveCatmullRom.alpha(0.5)));
 
     }, [data]);
     return <>
-        <svg ref={svgRef} className="m-10 w-[65%] h-[470px] rounded-2xl" />
+        <svg ref={svgRef} className="m-10 w-102 h-101 rounded-2xl shadow-lg shadow-teal-700" />
     </>
 }
 

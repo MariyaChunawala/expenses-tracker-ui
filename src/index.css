@@ -41,3 +41,23 @@
   font-weight: 500;
   font-style: italic;
 }
+
+.table-td {
+  background-color: #bbf7d0;
+  color: #14532d;
+  text-align: center;
+  font-size: 14px;
+  padding: 4px;
+  width: 25%;
+  border-bottom: solid 1px;
+}
+
+.text-red-500 {
+  color: red;
+  border-bottom: solid 1px #14532d;
+}
+
+.text-green-500 {
+  color: blue;
+  border-bottom: solid 1px #14532d;
+}
